@@ -1,6 +1,4 @@
 
-#OCP UTILS
-
 alias ocpw='oc get pods -w | grep -v "Completed"'
 
 function ocp { cmd='oc get pods | grep -v Completed'; echo $cmd; eval $cmd; }
@@ -46,5 +44,3 @@ export -f findprojectnames
 
 function ocproj { findprojectnames $1; echo "oc project $p"; oc project $p; }
 export -f ocproj
-
-#OCP UTILS END
