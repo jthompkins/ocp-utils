@@ -3,7 +3,7 @@
 
 WORKDIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 BASHRC_FILE="${HOME}/.bashrc"
-UTILS_FILE="${WORKDIR}/ocp-utils.sh"
+UTILS_FILE="${WORKDIR}/.ocp-utils.sh"
 SOURCE_CMD="source ${HOME}/.ocp-utils.sh"
 
 
