@@ -23,6 +23,7 @@ exit 1
 else
     echo "Copying ${BASHCONFIG_FILE} to ${HOME}/"
     cp "${BASHCONFIG_FILE}" "${HOME}/"
+    echo "Copying ${BASHCONFIGS_DIR} to ${HOME}/"
     cp -r "${BASHCONFIGS_DIR}" "${HOME}/"
 fi
 
