@@ -20,6 +20,7 @@ then
 echo "${UTILS_FILE} not found."
 exit 1
 else
+    echo "Copying ${UTILS_FILE} to ${HOME}/.ocp-utils.sh"
     cp "${UTILS_FILE}" "${HOME}/.ocp-utils.sh"
 fi
 
