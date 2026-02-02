@@ -3,8 +3,9 @@
 
 WORKDIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 BASHRC_FILE="${HOME}/.bashrc"
-UTILS_FILE="${WORKDIR}/.ocp-utils.sh"
-SOURCE_CMD="source ${HOME}/.ocp-utils.sh"
+BASHCONFIG_FILE="${WORKDIR}/.bashconfig"
+BASHCONFIGS_DIR="${WORKDIR}/.bashconfigs"
+SOURCE_CMD="source ${HOME}/.bashconfig"
 
 
 #Check if bashrc file exists
@@ -14,23 +15,24 @@ echo "${BASHRC_FILE} not found."
 exit 1
 fi
 
-#Check if ocp utils file exists in working directory. Copy to home directory if so.
-if [[ ! -f "${UTILS_FILE}" ]]
+#Check if .bashconfig file exists in working directory. Copy to home directory if so.
+if [[ ! -f "${BASHCONFIG_FILE}" ]]
 then
-echo "${UTILS_FILE} not found."
+echo "${BASHCONFIG_FILE} not found."
 exit 1
 else
-    echo "Copying ${UTILS_FILE} to ${HOME}/.ocp-utils.sh"
-    cp "${UTILS_FILE}" "${HOME}/.ocp-utils.sh"
+    echo "Copying ${BASHCONFIG_FILE} to ${HOME}"
+    cp "${BASHCONFIG_FILE}" "${HOME}/"
 fi
 
-#Check to see if utils already present
+#Check to see if bashconfig source command already present
 grep ${SOURCE_CMD} ${BASHRC_FILE} > /dev/null 2>&1
 if [[ $? -eq 0 ]]
 then
-    echo "Utils source command already present in ${BASHRC_FILE}"
+    echo "Bashconfig source command already present in ${BASHRC_FILE}"
     exit 0
 fi
-#Append utils to bashrc
+
+#Append bashconfig source command to bashrc
 echo ${SOURCE_CMD} >> ${BASHRC_FILE}
-echo "Utils source command appended to ${BASHRC_FILE}. Run 'source ~/.bashrc' to load them into your current shell."
+echo "Bashconfig source command appended to ${BASHRC_FILE}. Run 'source ~/.bashrc' to load them into your current shell."
